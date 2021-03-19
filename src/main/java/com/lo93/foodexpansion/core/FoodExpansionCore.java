@@ -48,6 +48,7 @@ public class FoodExpansionCore {
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.TOOL_MORTARPESTAL);
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.ITEM_WHOLEFLOUR);
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.TOOL_BAKINGTRAY);
+    		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.ITEM_DOUGHBALLBASIC);
     	}
     	
     	@SubscribeEvent
@@ -56,6 +57,7 @@ public class FoodExpansionCore {
     		ModItems.TOOL_MORTARPESTAL.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_mortar_pestal" ,"inventory"));
     		ModItems.ITEM_WHOLEFLOUR.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_whole_flour" ,"inventory"));
     		ModItems.TOOL_BAKINGTRAY.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_bakingtray" ,"inventory"));
+    		ModItems.ITEM_DOUGHBALLBASIC.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"item_doughballbasic" ,"inventory"));
     	}
     }
     
