@@ -12,4 +12,5 @@ public class ModItems {
 	public static final ItemBasic ITEM_WHEATGRAIN = (ItemBasic) new ItemBasic("item_wheatgrain").setCreativeTab(LoCoreMain.locorecreativetab);
 	public static final ItemBasic TOOL_BAKINGTRAY = (ItemBasic) new ItemBasic("tool_bakingtray").setCreativeTab(LoCoreMain.locorecreativetab);
 	public static final ItemBasic ITEM_DOUGHBALLBASIC = (ItemBasic) new ItemBasic("item_doughballbasic").setCreativeTab(LoCoreMain.locorecreativetab);
+	public static final ItemBasic TOOL_LOAFPAN = new ItemBasic("tool_loafpan");
 }
