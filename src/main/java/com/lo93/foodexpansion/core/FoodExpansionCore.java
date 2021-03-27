@@ -7,8 +7,9 @@ import org.apache.logging.log4j.Logger;
 import com.lo93.foodexpansion.core.init.items.ModItems;
 import com.lo93.locore.init.registry.ItemRegistry;
 import com.lo93.locore.proxy.CommonProxy;
+import com.lo93.locore.utils.logger.HelperLoggerMessages;
+import com.lo93.locore.utils.resourcelocation.HelperResourceLocation;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -28,10 +29,10 @@ public class FoodExpansionCore {
 	public static final String MODID = "foodexpansioncore";
     public static final String NAME = "Food Expansion Core";
     public static final String VERSION = "1.0";
-    
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-    
     public static final ItemRegistry itemregistry = new ItemRegistry(LOGGER);
+    public static final HelperResourceLocation RESOURCEHELPER = new HelperResourceLocation(MODID);
+    public static final HelperLoggerMessages LOGGERHELPER = new HelperLoggerMessages(LOGGER, MODID);
     
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -43,21 +44,25 @@ public class FoodExpansionCore {
     public static class RegistrationHandler {
     	@SubscribeEvent
     	public static void registerItems(RegistryEvent.Register<Item> event){
+    		LOGGERHELPER.logMsgRegItemstart();
     		IForgeRegistry<Item> registry = event.getRegistry();
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.TOOL_KNIFE);
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.TOOL_MORTARPESTAL);
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.ITEM_WHOLEFLOUR);
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.TOOL_BAKINGTRAY);
     		FoodExpansionCore.itemregistry.RegisterItem(registry, ModItems.ITEM_DOUGHBALLBASIC);
+    		LOGGERHELPER.logMsgRegItemend();
     	}
     	
     	@SubscribeEvent
     	public static void registerModels(ModelRegistryEvent event){
-    		ModItems.TOOL_KNIFE.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_knife" ,"inventory"));
-    		ModItems.TOOL_MORTARPESTAL.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_mortar_pestal" ,"inventory"));
-    		ModItems.ITEM_WHOLEFLOUR.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_whole_flour" ,"inventory"));
-    		ModItems.TOOL_BAKINGTRAY.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"tool_bakingtray" ,"inventory"));
-    		ModItems.ITEM_DOUGHBALLBASIC.RegisterItemModel(new ModelResourceLocation(FoodExpansionCore.MODID + ":" +"item_doughballbasic" ,"inventory"));
+    		LOGGERHELPER.logMsgRegModelstart();
+    		ModItems.TOOL_KNIFE.RegisterItemModel(RESOURCEHELPER.genModelResourcelocation("tool_knife"));
+    		ModItems.TOOL_MORTARPESTAL.RegisterItemModel(RESOURCEHELPER.genModelResourcelocation("tool_mortar_pestal"));
+    		ModItems.ITEM_WHOLEFLOUR.RegisterItemModel(RESOURCEHELPER.genModelResourcelocation("tool_whole_flour"));
+    		ModItems.TOOL_BAKINGTRAY.RegisterItemModel(RESOURCEHELPER.genModelResourcelocation("tool_bakingtray"));
+    		ModItems.ITEM_DOUGHBALLBASIC.RegisterItemModel(RESOURCEHELPER.genModelResourcelocation("item_doughballbasic"));
+    		LOGGERHELPER.logMsgRegModelend();
     	}
     }
     
